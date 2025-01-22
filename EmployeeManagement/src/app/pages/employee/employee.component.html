@@ -1,1 +1,83 @@
-<p>employee works!</p>
+
+    <div class="container my-4">
+       
+            <div class="tab-pane fade show active" id="projects" role="tabpanel">
+                <h2>Projects</h2>
+
+                <!-- Project Form -->
+                <form class="mb-4">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="employeeName" class="form-label">Employee Name</label>
+                            <input type="text" class="form-control" name="employeeName" [(ngModel)]="employeeObj.employeeName" id="employeeName" placeholder="Enter Employee name">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="contactNumber" class="form-label">Contact No</label>
+                            <input type="text" class="form-control" name="contactNo" [(ngModel)]="employeeObj.contactNo" id="contactNumber" placeholder="Enter contact number">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="deptId" class="form-label">Parent Department</label>
+                            <select class="form-select" [(ngModel)]="deptId" name="deptId" id="deptId" (change)="onDeptChange()">
+                                <option selected>Select Department</option>
+                                @for (item of parentDepartList; track $index) 
+                                {
+                                    <option [value]="item.departmentId">{{item.departmentName}}</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="deptId" class="form-label">Child Department</label>
+                            <select class="form-select" name="deptId" id="deptId">
+                                <option selected>Select Department</option>
+                                @for (item of childDepartList; track $index) 
+                                {
+                                    <option [value]="item.childDeptId">{{item.departmentName}}</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="gender" class="form-label">Gender</label><br/>
+                            <input type="radio" value="Male" name="gender" [(ngModel)]="employeeObj.gender" />Male
+                            <input type="radio" value="Female" name="gender" [(ngModel)]="employeeObj.gender" />Female
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="text" class="form-control" name="emailId" [(ngModel)]="employeeObj.emailId" id="email" placeholder="Enter email">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="text" class="form-control" name="password" [(ngModel)]="employeeObj.password" id="password" placeholder="Enter Password">
+                        </div>
+                    </div>
+                    <button type="submit" (click)="onSaveEmp()" class="btn btn-primary mt-3">Submit</button>
+                </form>
+
+                <!-- Project Table -->
+                <h3>Project List</h3>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Employee ID</th>
+                            <th>Name</th>
+                            <th>Contact No</th>
+                            <th>Email</th>
+                            <th>Department</th>
+                            <th>Role</th>
+                            <th>Gender</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Data rows go here -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Project Employees Tab -->         
+    </div>
